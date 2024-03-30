@@ -4,7 +4,7 @@ From Roommate to LLM.
 
 ## Turning Liam B Flynn into an Artificial Intelligence LLM
 
-This repository documents the process of transforming my roommate, Liam B Flynn, into an Artificial Intelligence LLM (Legal Language Model) after he transferred from our college.
+This repository documents the process of transforming my roommate, Liam B Flynn, into an Artificial Intelligence LLM (Large Language Model) after he transferred from our college.
 
 ### How It Happened
 
@@ -29,7 +29,7 @@ Contributions are welcome via issues or pull requests.
 
 ### Disclaimer
 
-This project is for educational purposes only and does not provide legal advice.
+This project is for educational purposes only and does not provide accurate advice.
 
 ### Acknowledgments
 
