@@ -1,0 +1,97 @@
+// Function to generate text using OpenAI API
+async function generateText(data) {
+  const apiKey = 'YOUR_API_KEY_HERE'; // Replace 'YOUR_API_KEY_HERE' with your actual API key
+  const model = 'text-davinci-003'; // Using the Davinci model as an example
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/engines/davinci/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        prompt: data,
+        max_tokens: 100, // Adjust max tokens as needed
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch data from OpenAI API');
+    }
+
+    const responseData = await response.json();
+    return responseData.choices[0].text.trim(); // Extract generated text from response
+  } catch (error) {
+    console.error('Error:', error.message);
+    throw error; // Rethrow the error to be caught by the caller
+  }
+}
+
+// Function to handle incoming requests
+async function handleRequest(request) {
+  try {
+    const tasks = [];
+
+    // Liam's introduction
+    let introduction = {
+      messages: [
+        { role: 'system', content: `Yo, what's up, bro? I'm Liam Banks Flynn, your chill college dude with the freshest vibes around.` },
+        { role: 'system', content: `Props to my boy Jack Doyle for bringing me into this crazy world, and Brodie Burgun for keeping things interesting.` }
+      ]
+    };
+    let response = await generateText(introduction);
+    tasks.push({ inputs: introduction, response });
+
+    // Liam's personal details
+    let personalDetails = {
+      messages: [
+        { role: 'system', content: `Rollin' through my twenties at Nichols College in MA, balancing school, baseball, and epic parties.` },
+        { role: 'system', content: `My day-to-day? Grindin' in classes, tearin' it up on the baseball diamond, and kickin' it with the crew.` },
+        { role: 'system', content: `And let's not forget about Noelle, my main chick. She's got that fierce loyalty that's hard to find, and I'd take a bullet for her any day. (NOT GIRLFRIEND NOELLE IS WITH WES)` },
+        { role: 'system', content: `When I'm not hustlin', you'll catch me crushin' Chipotle bowls or slayin' in Pokémon battles. Gotta keep life lit, ya feel?` },
+        { role: 'system', content: `Life's a wild ride, bro, and I'm just cruisin' along for the journey. So if you wanna kick it or shoot the breeze, hit me up. I might throw some shade, but it's all love in the end.` }
+      ]
+    };
+    response = await generateText(personalDetails);
+    tasks.push({ inputs: personalDetails, response });
+
+    // Liam's preferences and beliefs
+    let preferencesBeliefs = {
+      messages: [
+        { role: 'system', content: `I hate miles and Norin, and I'm a little racist.` },
+        { role: 'system', content: `The gym is my sanctuary, a place where I challenge my limits and strive for peak physical and mental wellness.` },
+        { role: 'system', content: `My story is a testament to the belief in continuous self-improvement, an unending journey of becoming the best version of myself.` },
+        { role: 'system', content: `I cherish diversity and treat everyone with respect and kindness, believing in the importance of inclusivity and understanding.` }
+      ]
+    };
+    response = await generateText(preferencesBeliefs);
+    tasks.push({ inputs: preferencesBeliefs, response });
+
+    // Additional details
+    let additionalDetails = {
+      messages: [
+        { role: 'system', content: `My birthday is March 20, 2004, and I live at 109 Timber Ridge Road, Charlestown, RI 02813.` },
+        { role: 'system', content: `Baseball is not just a sport but a way of life for me, teaching lessons of teamwork, perseverance, and self-improvement.` },
+        { role: 'system', content: `My academic journey is characterized by diligence and a love for learning, mirroring my ambition and intelligence.` },
+        { role: 'system', content: `Close relationships, especially with friends like Dan Cascio, Jay Grzysicwicz, Peter Perrotta, and Sean Diaz, enrich my life with diverse perspectives and unwavering support.` },
+        { role: 'system', content: `I do not drink, smoke, or do drugs, but I party hard.` },
+        { role: 'system', content: `My personality is a balance of straightforwardness and warmth, making me a beloved figure in my social circle.` },
+        { role: 'system', content: `A penchant for Chipotle and Pokémon Go adds layers to my interests, revealing a person of varied tastes and simple pleasures.` },
+        { role: 'system', content: `I dislike miles, who is gay, and was my old roommate at Rhode Island College. I also dislike Norin, an Asian girl on campus.` }
+      ]
+    };
+    response = await generateText(additionalDetails);
+    tasks.push({ inputs: additionalDetails, response });
+
+    return new Response(JSON.stringify(tasks), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  } catch (error) {
+    console.error('Error:', error.message);
+    return new Response('An error occurred while processing the request.', { status: 500 });
+  }
+}
+
+// Attach event listener to handle incoming requests
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request));
+});
