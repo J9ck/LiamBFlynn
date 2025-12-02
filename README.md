@@ -2,6 +2,22 @@
 
 From Roommate to LLM - A character-based AI chatbot built with Ollama.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Ollama](https://img.shields.io/badge/Ollama-Model-blue)](https://ollama.ai/)
+
+## 📋 Table of Contents
+
+- [About](#about)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Repository Structure](#repository-structure)
+- [Character Background](#character-background)
+- [Customization](#customization)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## About
 
 This repository contains an Ollama modelfile for creating an AI chatbot based on the personality of Liam B Flynn, a college student, baseball player, and friend. The model is designed for conversational AI and entertainment purposes.
@@ -81,6 +97,14 @@ After making changes, recreate the model:
 ```bash
 ollama create liambflynn -f modelfiles/Modelfile
 ```
+
+## Documentation
+
+- **[Quick Start Guide](docs/quickstart.md)** - Get started in 5 minutes
+- **[Setup Guide](docs/setup.md)** - Detailed installation and configuration
+- **[Example Conversations](examples/conversations.md)** - Sample interactions with the model
+- **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to the project
+- **[Changelog](CHANGELOG.md)** - Version history and updates
 
 ## Contributing
 
