@@ -41,10 +41,10 @@ Type `/bye` to exit the chat.
 
 ## What's Next?
 
-- **Learn more**: Check out the [full documentation](docs/setup.md)
-- **See examples**: View [example conversations](examples/conversations.md)
+- **Learn more**: Check out the [full documentation](setup.md)
+- **See examples**: View [example conversations](../examples/conversations.md)
 - **Customize**: Edit `modelfiles/Modelfile` and recreate the model
-- **Contribute**: Read the [contributing guide](CONTRIBUTING.md)
+- **Contribute**: Read the [contributing guide](../CONTRIBUTING.md)
 
 ## Common Commands
 
@@ -73,7 +73,7 @@ ollama create liambflynn -f modelfiles/Modelfile
 - Visit [ollama.ai](https://ollama.ai/) to download
 
 **Need help?**
-- Check the [setup guide](docs/setup.md)
+- Check the [setup guide](setup.md)
 - Open an issue on GitHub
 
 ## Have Fun!
